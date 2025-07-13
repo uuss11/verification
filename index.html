@@ -1,27 +1,38 @@
-<--شعندك داخل للكود--> 
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>استبيان للدخول للكروب</title>
-  <script>
-    function showResult() {
-      const answers = [];
-      const questions = document.querySelectorAll(".question");
-      questions.forEach((q, i) => {
-        const input = q.querySelector("textarea, select");
-        answers.push(`❓ ${q.dataset.q}\n📝 ${input.value.trim()}`);
-      });
-      const resultText = answers.join("\n\n");
-      document.getElementById("result-box").style.display = "block";
-      document.getElementById("result").textContent = resultText;
-      const shareText = encodeURIComponent(resultText + "\n\n@x964i");
-      const shareLink = `https://t.me/x964i?start=message&text=${shareText}`;
-      document.getElementById("share-btn").href = shareLink;
-      document.getElementById("result-box").scrollIntoView({ behavior: 'smooth' });
-    }
-  </script>
+  
+<script>
+  function showResult() {
+    const answers = [];
+    const questions = document.querySelectorAll(".question");
+    questions.forEach((q) => {
+      const input = q.querySelector("textarea, select");
+      answers.push(`❓ ${q.dataset.q}\n📝 ${input.value.trim()}`);
+    });
+    const resultText = answers.join("\n\n") + "\n\n@x964i";
+    document.getElementById("result-box").style.display = "block";
+    document.getElementById("result").textContent = resultText;
+
+    document.getElementById("share-btn").onclick = () => {
+      window.open("https://t.me/x964i", "_blank");
+    };
+
+    document.getElementById("copy-btn").onclick = () => {
+      navigator.clipboard.writeText(resultText);
+      document.getElementById("copy-btn").textContent = "✅ تم النسخ";
+      setTimeout(() => {
+        document.getElementById("copy-btn").textContent = "📋 نسخ النص";
+      }, 2000);
+    };
+
+    document.getElementById("result-box").scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -158,10 +169,10 @@
     </select>
   </div>
   <button onclick="showResult()">عرض النتيجة</button>
-  <div id="result-box">
-    <h3>نتيجتك:</h3>
-    <div id="result"></div>
-    <a id="share-btn" target="_blank">مشاركة إلى @x964i</a>
-  </div>
-</body>
-</html>
+ 
+<div id="result-box">
+  <h3>نتيجتك:</h3>
+  <div id="result" style="margin-bottom: 10px; background:#fff; padding:10px; border-radius:10px;"></div>
+  <button id="copy-btn" style="background:#555;margin-left:10px;">📋 نسخ النص</button>
+  <a id="share-btn" target="_blank">🔗 فتح محادثة مع @x964i</a>
+</div>
