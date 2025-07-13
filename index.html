@@ -1,0 +1,167 @@
+<--شعندك داخل للكود--> 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>استبيان للدخول للكروب</title>
+  <script>
+    function showResult() {
+      const answers = [];
+      const questions = document.querySelectorAll(".question");
+      questions.forEach((q, i) => {
+        const input = q.querySelector("textarea, select");
+        answers.push(`❓ ${q.dataset.q}\n📝 ${input.value.trim()}`);
+      });
+      const resultText = answers.join("\n\n");
+      document.getElementById("result-box").style.display = "block";
+      document.getElementById("result").textContent = resultText;
+      const shareText = encodeURIComponent(resultText + "\n\n@x964i");
+      const shareLink = `https://t.me/x964i?start=message&text=${shareText}`;
+      document.getElementById("share-btn").href = shareLink;
+      document.getElementById("result-box").scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      color: #4448ff;
+      margin-bottom: 30px;
+      font-weight: 700;
+      font-size: 28px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    .question {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #e0e0e0;
+    }
+    .question:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+    textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+    textarea:focus, select:focus {
+      outline: none;
+      border-color: #4448ff;
+      box-shadow: 0 0 0 2px rgba(68, 72, 255, 0.2);
+    }
+    button {
+      padding: 12px 24px;
+      background: #4448ff;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+      display: block;
+      width: 100%;
+    }
+    button:hover {
+      background: #3a3de6;
+      transform: translateY(-2px);
+    }
+    #result-box {
+      display: none;
+      margin-top: 30px;
+      white-space: pre-wrap;
+      background: #e3f2fd;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #bbdefb;
+    }
+    #result-box h3 {
+      margin-top: 0;
+      color: #4448ff;
+      font-size: 20px;
+    }
+    #result {
+      margin: 15px 0;
+      font-size: 16px;
+    }
+    a#share-btn {
+      display: inline-block;
+      margin-top: 15px;
+      background: #0088cc;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    a#share-btn:hover {
+      background: #0077b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>الاسئله</h1>
+  <div class="question" data-q="شنو كانت نظرتك حول كروب وجماعة اختام بابل؟">
+    <label>شنو كانت نظرتك حول كروب وجماعة اختام بابل؟</label>
+    <textarea rows="2"></textarea>
+  </div>
+  <div class="question" data-q="شلون جانت اخلاق وتصرفات جماعة يوسف\"اختام بابل\"؟">
+    <label>شلون جانت اخلاق وتصرفات جماعة يوسف"اختام بابل"؟</label>
+    <textarea rows="2"></textarea>
+  </div>
+  <div class="question" data-q="هل مافعلوه، من نشر وسب وفضح وشتم الناس، صحيح ام لا؟">
+    <label>هل مافعلوه، من نشر وسب وفضح وشتم الناس، صحيح ام لا؟</label>
+    <textarea rows="2"></textarea>
+  </div>
+  <div class="question" data-q="ماذا ترى في ما نشرناه في قناتنا؟ جيد صحيح /خطأ غير صحيح">
+    <label>ماذا ترى في ما نشرناه في قناتنا؟ جيد صحيح /خطأ غير صحيح</label>
+    <textarea rows="2"></textarea>
+  </div>
+  <div class="question" data-q="هل يمكنك مساعدتنا في الكروب وما يمكنك فعله؟ نعم /لا">
+    <label>هل يمكنك مساعدتنا في الكروب وما يمكنك فعله؟ نعم /لا</label>
+    <textarea rows="2"></textarea>
+  </div>
+  <div class="question" data-q="هل أنتَ معنا ام ضدنا؟">
+    <label>هل أنتَ معنا ام ضدنا؟</label>
+    <select>
+      <option value="">اختر</option>
+      <option value="معكم">معكم</option>
+      <option value="ضدكم">ضدكم</option>
+      <option value="محايد">محايد</option>
+    </select>
+  </div>
+  <button onclick="showResult()">عرض النتيجة</button>
+  <div id="result-box">
+    <h3>نتيجتك:</h3>
+    <div id="result"></div>
+    <a id="share-btn" target="_blank">مشاركة إلى @x964i</a>
+  </div>
+</body>
+</html>
